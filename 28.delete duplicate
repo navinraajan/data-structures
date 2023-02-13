@@ -1,0 +1,55 @@
+#include <stdio.h>
+ 
+int main()
+{
+    int numbers[1000], noDups[1000] = {0};
+    int i, j, size, noDupsSize = 0, isFound = 0;
+ 
+    printf("Enter desired array size(1-1000): ");
+    scanf("%d", &size);
+ 
+    // check for array bounds
+    if(size >= 1000 || size <= 0)
+    {
+        printf("Invalid Size, Try again \n");
+        return 0;
+    }
+    printf("Please enter array elements(%d) : ", size);
+    for(i = 0; i < size; i++)
+    {
+        printf("numbers[%d] : ", i);
+        scanf("%d", &numbers[i]);
+    for(i=0; i<size; i++)
+    {
+        isFound = 0;
+        for(j=0; j<noDupsSize; j++)
+        {
+            if(numbers[i] == noDups[j])
+            {
+                isFound = 1;
+                break;
+            }
+        }
+        if(isFound == 0)
+        {
+            noDups[noDupsSize] = numbers[i];
+            noDupsSize++;
+        }
+    for(i = 0; i < size; i++)
+    {
+        printf("%d ", numbers[i]);    
+    }
+    printf("\n");
+     for(i=0; i<noDupsSize; i++)
+     {
+         numbers[i] = noDups[i];
+     }
+    printf("Array (without Duplicates): ");
+    for(i = 0; i < noDupsSize; i++)
+    {
+        printf("%d ", noDups[i]);    
+    }
+    printf("\n");
+ 
+    return 0;
+}
